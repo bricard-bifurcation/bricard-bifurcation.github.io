@@ -1,0 +1,804 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <title>Bricard Bifurcations · Siyue Yao</title>
+  <meta name="description" content="Where a plane-symmetric Bricard mechanism bifurcates, read from two coplanar ellipses: split about its symmetry plane, the mechanism's configurations for one input are the ellipses' intersection points, and it bifurcates where they meet in infinitely many points. Six cases, each with its conditions on the mechanism's parameters and an example.">
+  <meta name="citation_title" content="A Geometric Approach for the Bifurcation Modeling and Analysis of Plane-Symmetric Bricard Mechanisms">
+  <meta name="citation_author" content="Yuliang Lu">
+  <meta name="citation_author" content="Siyue Yao">
+  <meta name="citation_author" content="Yanjun Wang">
+  <meta name="citation_author" content="Hao Wang">
+  <meta name="citation_author" content="Genliang Chen">
+  <meta name="citation_publication_date" content="2024/06/24">
+  <meta name="citation_conference_title" content="2024 6th International Conference on Reconfigurable Mechanisms and Robots (ReMAR)">
+  <meta name="citation_firstpage" content="180">
+  <meta name="citation_lastpage" content="185">
+  <meta name="citation_publisher" content="IEEE">
+  <meta name="citation_doi" content="10.1109/ReMAR61031.2024.10617685">
+  <meta property="og:title" content="Bricard Bifurcations">
+  <meta property="og:description" content="A plane-symmetric Bricard mechanism bifurcates where two coplanar ellipses meet in infinitely many points: six cases, from a Myard 5R linkage to a single revolute joint.">
+  <meta property="og:image" content="https://bricard-bifurcation.github.io/hero.jpg">
+  <meta property="og:url" content="https://bricard-bifurcation.github.io/">
+  <link rel="canonical" href="https://bricard-bifurcation.github.io/">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23131312'/%3E%3Ctext x='32' y='44' text-anchor='middle' fill='%23ebe8e1' font-family='Georgia' font-size='36'%3ES%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap"></noscript>
+  <style>
+/* Shared styles for Siyue Yao's project pages.
+   Distilled from the Compliant Wrist, Fluorescent Whisker, FBG Whisker and UMI-Underwater pages:
+   a black opening, light reading sections, and Newsreader italics as the serif accent.
+   Each page sets --accent and --accent-hero on <body>. */
+:root {
+  --ink: #242523;
+  --muted: #6d7069;
+  --line: #e3e5df;
+  --wash: #f7f8f5;
+  --accent: #80611e;
+  --accent-hero: #efc985;
+  --max: 1040px;
+  --read: 800px;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body { margin: 0; background: #fff; color: var(--ink); font: 17px/1.75 var(--sans); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-underline-offset: 4px; text-decoration-color: #b4b8ac; }
+a:hover { color: var(--accent); }
+button { font: inherit; cursor: pointer; }
+a, button, summary { -webkit-tap-highlight-color: transparent; }
+a:focus-visible, button:focus-visible, summary:focus-visible, pre:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+img, video { display: block; max-width: 100%; height: auto; }
+video { width: 100%; background: #090b08; }
+h1, h2, h3, h4, p, figure { margin: 0; }
+h1, h2, h3, h4 { line-height: 1.2; letter-spacing: -0.035em; }
+p + p { margin-top: 18px; }
+sup { font-size: 0.65em; line-height: 0; vertical-align: super; }
+sub { line-height: 0; }
+strong { font-weight: 600; }
+[hidden] { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.skip { position: absolute; top: -80px; left: 20px; z-index: 40; padding: 8px 15px; background: #fff; color: var(--ink); }
+.skip:focus { top: 10px; }
+
+/* ---------- Opening (both styles) ---------- */
+.hero { position: relative; background: #000; color: #f4f4f1; }
+.hero-nav { position: absolute; inset: 0 0 auto; z-index: 3; display: flex; justify-content: flex-end; gap: 20px; padding: 22px 5vw; font-size: 13px; line-height: 24px; }
+.hero-nav a { color: #efefed; text-decoration: none; }
+.hero-nav a:hover { color: var(--accent-hero); }
+.eyebrow { margin-bottom: 18px; font-size: 11px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); }
+.hero .eyebrow { color: var(--accent-hero); }
+.hero h1 { font-weight: 600; letter-spacing: -0.045em; text-wrap: balance; }
+.title-main { display: block; font-size: clamp(40px, 4.4vw, 72px); line-height: 1.04; }
+.title-detail { display: block; margin-top: 18px; font-size: clamp(18px, 1.5vw, 23px); font-weight: 400; line-height: 1.4; letter-spacing: -0.01em; color: #e6e6e2; }
+.hero-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; font-size: 12px; line-height: 1.7; color: #d1d1ce; }
+.hero-foot p { margin: 0; }
+.hero-foot a { color: inherit; }
+.motion { flex-shrink: 0; padding: 4px 12px; border: 1px solid #cccec7; border-radius: 20px; background: transparent; color: var(--muted); font-size: 11px; line-height: 1.7; }
+.motion:hover { border-color: var(--ink); color: var(--ink); }
+.hero .motion { border-color: #888; background: #0006; color: #eee; }
+.hero .motion:hover { border-color: #fff; color: #fff; }
+.hero a:focus-visible, .hero button:focus-visible { outline-color: var(--accent-hero); }
+
+/* Full-screen opening: the clip covers the first screen; the title sits over a quiet area.
+   .is-split keeps the clip on the left 64% and fades it into black under the title. */
+.hero--cover .hero-frame { position: relative; isolation: isolate; height: 100svh; min-height: 640px; overflow: hidden; }
+.hero--cover .hero-media { position: absolute; inset: 0; z-index: -2; background: #000; }
+.hero--cover .hero-media video { width: 100%; height: 100%; object-fit: cover; object-position: var(--hero-pos, 50% 50%); background: #000; }
+.hero--cover .hero-frame::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(180deg, rgba(0, 0, 0, 0.38), transparent 26%, transparent 70%, rgba(0, 0, 0, 0.62)); }
+.hero--cover .hero-heading { position: absolute; top: clamp(84px, 11svh, 124px); right: 5vw; width: min(44vw, 780px); text-shadow: 0 2px 16px #000b; }
+.hero--cover.is-split .hero-media { right: 36%; }
+.hero--cover.is-split .hero-media::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, transparent 62%, #000); }
+.hero--cover.is-split .hero-heading { width: min(32vw, 560px); }
+.hero--cover .hero-foot { position: absolute; left: 5vw; right: 5vw; bottom: 24px; }
+.hero-explore { position: absolute; bottom: 26px; left: 50%; z-index: 1; display: inline-flex; align-items: center; gap: 24px; padding-bottom: 7px; transform: translateX(-50%); border-bottom: 1px solid #aaa; color: #fff; font-size: 13px; text-decoration: none; }
+.hero-explore:hover { border-color: var(--accent-hero); color: var(--accent-hero); }
+
+/* Framed opening: title on black, the clip below at no more than its own width. */
+.hero--stage { padding: 82px 24px 0; }
+.hero--stage .hero-heading { max-width: 980px; margin: 0 auto; text-align: center; }
+.hero--stage .title-main { font-size: clamp(34px, 3.6vw, 54px); line-height: 1.1; }
+.hero-stage-media { position: relative; width: 100%; max-width: min(var(--max), var(--media-w, var(--max))); margin: 34px auto 0; }
+.hero-stage-media::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, #000, transparent 5%, transparent 95%, #000), linear-gradient(180deg, #000, transparent 8%, transparent 92%, #000); }
+.hero-stage-media.is-light::after { display: none; }
+.hero-stage-media img { width: 100%; }
+.hero-stage-media.is-light :is(video, img) { outline: 1px solid #ffffff2e; }
+.hero--stage .hero-foot { max-width: min(var(--max), var(--media-w, var(--max))); margin: 12px auto 0; }
+
+/* Authors band under either opening */
+.hero-meta { max-width: 1100px; margin: 0 auto; padding: 36px 24px 44px; text-align: center; }
+.authors { margin: 0 auto; font-size: 16px; line-height: 1.85; }
+.authors a { text-decoration: none; }
+.hero .authors a:hover { color: #fff; text-decoration: underline; }
+.affiliations { margin-top: 10px; font-size: 14px; color: #c0c0bd; }
+.venue { margin-top: 10px; font-size: 13px; font-style: italic; color: #aaa; }
+.actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 24px; }
+.button { display: inline-flex; align-items: center; gap: 16px; padding: 9px 20px; border: 1px solid #555; border-radius: 24px; background: #151515; color: #eee; font-size: 13px; line-height: 1.5; text-decoration: none; }
+.button:first-child { border-color: #f4f4f1; background: #f4f4f1; color: #20211e; }
+.button:hover { border-color: #ddd; background: #252525; color: #fff; }
+.button:first-child:hover { background: #fff; color: #000; }
+
+/* ---------- Page body ---------- */
+.section-nav { position: sticky; top: 0; z-index: 20; display: flex; justify-content: center; gap: 26px; overflow-x: auto; padding: 16px 24px; border-block: 1px solid var(--line); background: #ffffffed; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); scrollbar-width: none; }
+.section-nav::-webkit-scrollbar { display: none; }
+.section-nav a { flex-shrink: 0; font-size: 12px; white-space: nowrap; text-decoration: none; color: var(--muted); }
+.section-nav a.active { color: var(--accent); }
+.section { padding: 84px 30px; }
+.section.soft { background: var(--wash); }
+.section:not(.soft) + .section:not(.soft) { border-top: 1px solid var(--line); }
+.wide { max-width: var(--max); margin-left: auto; margin-right: auto; }
+.reading { max-width: var(--read); margin-left: auto; margin-right: auto; }
+.reading + .wide, .wide + .reading, .wide + .wide, .reading + .reading { margin-top: 32px; }
+h2 { margin-bottom: 14px; font-size: clamp(31px, 3.1vw, 42px); font-weight: 600; }
+h2 em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+h3 { margin: 36px 0 14px; font-size: 24px; font-weight: 600; }
+.question { margin: 0 0 26px; font: italic 400 22px/1.45 var(--serif); letter-spacing: -0.01em; color: #6a6d66; }
+.statement { padding: 88px 30px 72px; text-align: center; }
+.statement .lead { max-width: 760px; margin: 22px auto 0; font-size: 22px; line-height: 1.6; color: #474c43; }
+.statement .lead + p { margin-top: 20px; color: #5e645a; }
+.note { margin-top: 24px; padding-left: 14px; border-left: 2px solid var(--line); font-size: 14px; line-height: 1.7; color: var(--muted); }
+
+/* Media blocks */
+figcaption { font-size: 13px; line-height: 1.65; color: var(--muted); }
+.figure-foot { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin-top: 12px; }
+.figure-foot > span { flex: 1; }
+.clip > figcaption:not(.figure-foot) { margin-top: 12px; }
+/* A figure fits on one screen below the sticky nav (a tall one keeps its proportions, centred); click for the large view.
+   Multiplied onto the section behind it, so the white it is drawn on takes the section's colour (the large view keeps white). */
+.paper-fig img { width: 100%; max-height: max(320px, calc(100svh - 200px)); object-fit: contain; mix-blend-mode: multiply; }
+.paper-fig figcaption { margin-top: 12px; text-align: center; }
+.zoom { display: block; cursor: zoom-in; }
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: start; }
+.trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: start; }
+/* .pair.match: each item grows in proportion to its media's aspect ratio (--ar = width / height on the item),
+   so the two images or clips come out the same height */
+.pair.match { display: flex; align-items: flex-start; }
+.pair.match > * { flex: var(--ar, 1) 1 0; min-width: 0; }
+.strip { display: grid; grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); gap: 14px; }
+.strip img { width: 100%; aspect-ratio: var(--ratio, 4 / 5); object-fit: cover; border-radius: 3px; background: #0b0b0b; }
+.strip--contain img { object-fit: contain; }
+.strip--scroll { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 190px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; padding-bottom: 10px; scrollbar-width: thin; }
+.strip--scroll > figure { scroll-snap-align: start; }
+.strip--scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.strip figcaption { margin-top: 8px; font-size: 12px; line-height: 1.5; }
+.strip figcaption b { display: block; font-size: 13px; font-weight: 600; color: var(--ink); }
+.strip + .strip-caption { margin-top: 14px; }
+.strip-caption { font-size: 13px; text-align: center; color: var(--muted); }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); padding: 22px 0; border-block: 1px solid var(--line); }
+.stat { padding: 6px 12px; text-align: center; }
+.stat + .stat { border-left: 1px solid var(--line); }
+.stat b { display: block; font-size: 30px; font-weight: 500; line-height: 1.2; letter-spacing: -0.04em; color: #2c2e2a; }
+.stat span { display: block; margin-top: 8px; font-size: 12px; line-height: 1.5; color: var(--muted); }
+.steps { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 22px; padding: 28px 0; border-block: 1px solid var(--line); }
+.steps > div { padding: 0 20px; }
+.steps > div > span { font-size: 12px; color: var(--accent); }
+.steps h4 { margin: 10px 0; font-size: 22px; font-weight: 500; }
+.steps p { font-size: 14px; line-height: 1.6; color: var(--muted); }
+.steps > .arrow { align-self: center; font-size: 24px; color: #aeb4a7; }
+.tabs { display: flex; gap: 26px; margin-bottom: 20px; overflow-x: auto; border-bottom: 1px solid #cacfc3; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tabs button { flex-shrink: 0; margin-bottom: -1px; padding: 12px 0; border: 0; border-bottom: 2px solid transparent; background: none; color: var(--muted); font-size: 14px; white-space: nowrap; }
+.tabs button[aria-selected="true"] { border-bottom-color: var(--accent); color: var(--ink); }
+.tab-panel:not([hidden]) + .tab-panel { margin-top: 36px; }
+.tab-panel > p { max-width: var(--read); margin: 16px auto 0; font-size: 15px; }
+.evidence { border-block: 1px solid var(--line); }
+.evidence summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px 0; font-size: 14px; font-weight: 500; list-style: none; cursor: pointer; }
+.evidence summary::-webkit-details-marker { display: none; }
+.evidence summary::after { content: "+"; font-size: 20px; font-weight: 400; color: var(--muted); }
+.evidence[open] summary::after { content: "−"; }
+.evidence > :not(summary) { margin-bottom: 24px; }
+.evidence + .evidence { border-top: 0; }
+
+/* Data tables (values from the paper's tables): .table-wrap scrolls sideways on narrow screens */
+.table-wrap { overflow-x: auto; overscroll-behavior-x: contain; }
+.table-wrap:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.data-table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.5; font-variant-numeric: tabular-nums; }
+.data-table th, .data-table td { padding: 10px 14px; border-bottom: 1px solid var(--line); text-align: right; }
+.data-table td { white-space: nowrap; }
+.data-table th:first-child, .data-table td:first-child { padding-left: 0; text-align: left; }
+.data-table th:last-child, .data-table td:last-child { padding-right: 0; }
+.data-table thead th { border-bottom-color: #cacfc3; font-size: 12px; font-weight: 600; line-height: 1.4; color: var(--muted); vertical-align: bottom; }
+.data-table tbody th { font-weight: 500; }
+.table-fig figcaption { margin-top: 12px; text-align: center; }
+/* .grouped: one tbody per group, its name in a th spanning the group's rows (scope="rowgroup"); lines only between
+   groups. .fit: only as wide as the columns, centred. */
+.data-table.grouped tbody tr > * { padding-top: 6px; padding-bottom: 6px; border-bottom: 0; }
+.data-table.grouped tbody tr:first-child > * { padding-top: 14px; }
+.data-table.grouped tbody tr:last-child > * { padding-bottom: 14px; }
+.data-table.grouped tbody + tbody tr:first-child > * { border-top: 1px solid var(--line); }
+.data-table.grouped tbody th[rowspan] { font-weight: 600; vertical-align: top; }
+.data-table.grouped tbody td:first-of-type { padding-left: 14px; color: var(--muted); text-align: right; }
+.data-table.fit { width: auto; margin: 0 auto; }
+.data-table.fit th, .data-table.fit td { padding-right: 26px; padding-left: 26px; }
+.data-table.fit th:first-child, .data-table.fit td:first-child { padding-left: 0; }
+.data-table.fit th:last-child, .data-table.fit td:last-child { padding-right: 0; }
+/* A table with color blocks of the same shares beside it (.heatmap, e.g. a classifier's results). Both are .data-table
+   with the same header rows ("Identified as" over the classes: th.axis), so their rows line up; the rows are taller
+   here, so the blocks come out square. A block is the palette's light end mixed toward its dark end by its share
+   (--v, 0 to 1), with rounded corners and a gap around it; th.axis-rows titles the rows, turned to read upward. */
+.table-pair { display: grid; grid-template-columns: minmax(0, 470px) auto; justify-content: center; align-items: start; gap: 64px; }
+.table-pair .data-table tbody th, .table-pair .data-table tbody td { padding-top: 15px; padding-bottom: 15px; }
+.data-table thead tr:not(:last-child) th { padding-bottom: 6px; }
+.data-table thead th:empty { border-bottom-color: transparent; }
+.data-table thead th.axis { font-size: 11px; letter-spacing: 0.08em; text-align: center; text-transform: uppercase; }
+.heatmap { --hm-low: #e9f2f5; --hm-high: #14527a; width: auto; }
+.heatmap th, .heatmap td, .heatmap thead th { border-bottom-color: transparent; }
+.heatmap thead th + th { padding-right: 0; padding-left: 0; text-align: center; }
+.heatmap tbody th:not(.axis-rows) { padding-right: 10px; padding-left: 0; font-size: 12px; line-height: 21px; color: var(--muted); text-align: right; }
+/* The rows' title is ordinary text turned 90° in a column of its own: vertical writing-mode in a narrow cell wraps and
+   overflows in Safari. */
+.heatmap th.axis-rows { position: relative; width: 28px; padding: 0; }
+.heatmap th.axis-rows span { position: absolute; top: 50%; left: 50%; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; line-height: 1.4; color: var(--muted); text-transform: uppercase; white-space: nowrap; transform: translate(-50%, -50%) rotate(-90deg); }
+.heatmap td { position: relative; z-index: 0; width: 52px; padding-right: 0; padding-left: 0; font-size: 13px; font-weight: 500; line-height: 21px; color: #33404a; text-align: center; }
+.heatmap td::before { content: ""; position: absolute; inset: 2px; z-index: -1; border-radius: 5px; background: color-mix(in oklab, var(--hm-high) calc(var(--v, 0) * 100%), var(--hm-low)); }
+.heatmap td.dark { color: #fff; }
+
+/* Beyond the paper */
+.beyond .eyebrow { color: var(--muted); }
+.beyond .eyebrow::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 8px; border: 1px solid currentColor; border-radius: 50%; vertical-align: 1px; }
+
+/* Q&A */
+.qa details { border-top: 1px solid var(--line); }
+.qa details:last-child { border-bottom: 1px solid var(--line); }
+.qa summary { display: flex; justify-content: space-between; gap: 24px; padding: 16px 0; font-size: 16px; font-weight: 500; list-style: none; cursor: pointer; }
+.qa summary::-webkit-details-marker { display: none; }
+.qa summary::after { content: "+"; color: #999; }
+.qa details[open] summary::after { content: "−"; }
+.qa details p { padding: 0 20px 18px 0; font-size: 15px; line-height: 1.8; color: #555; }
+
+/* Paper & citation */
+.paper-title { margin-top: 8px; font-size: 21px; font-weight: 500; line-height: 1.5; }
+.section .venue { color: var(--muted); }
+.paper-links { display: flex; flex-wrap: wrap; gap: 8px 26px; margin-top: 20px; }
+.text-link { font-size: 14px; color: var(--accent); }
+.citation { margin-top: 32px; }
+.citation-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin: 4px 0 12px; font-size: 13px; color: var(--accent); }
+.citation-copy { padding: 6px 15px; border: 1px solid #c8ccc3; border-radius: 20px; background: #fff; color: var(--ink); font-size: 12px; line-height: 1.6; }
+.citation-copy:hover { border-color: var(--accent); color: var(--accent); }
+.citation-status { min-height: 1.6em; font-size: 13px; color: var(--muted); }
+.citation pre { max-width: 100%; margin: 8px 0 24px; padding: 18px 20px; overflow-wrap: anywhere; white-space: pre-wrap; border: 1px solid var(--line); border-radius: 3px; background: #fff; color: #4a4e45; font: 12px/1.75 var(--mono); tab-size: 2; }
+.affiliation-list { padding-left: 22px; font-size: 14px; line-height: 1.7; }
+.affiliation-list li { padding: 4px 0; }
+.small { font-size: 13px; }
+.credit { margin-top: 28px; font-size: 12px; line-height: 1.6; color: var(--muted); }
+
+/* Full video */
+.chapters { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px; margin-top: 18px; }
+.chapters button { padding: 4px 0; border: 0; border-bottom: 1px solid #c8ccc3; background: none; color: #4e5746; font-size: 12px; }
+.chapters button:hover { border-color: var(--accent); color: var(--accent); }
+.chapters span { margin-right: 6px; color: #858b7d; font-variant-numeric: tabular-nums; }
+
+/* Related & footer */
+.related-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
+.related-list a { display: block; height: 100%; padding: 16px 18px; border: 1px solid var(--line); border-radius: 4px; text-decoration: none; }
+.related-list a:hover { border-color: var(--accent); }
+.related-list b { display: block; font-size: 15px; font-weight: 600; line-height: 1.35; }
+.related-list span { display: block; margin-top: 6px; font-size: 12px; line-height: 1.5; color: var(--muted); }
+.footer { display: flex; justify-content: flex-end; gap: 20px; max-width: 1200px; margin: 0 auto; padding: 30px 32px 42px; border-top: 1px solid var(--line); font-size: 11px; color: var(--muted); }
+.footer a { text-decoration: none; }
+.footer p { margin: 0; }
+
+/* Lightbox */
+dialog { width: calc(100vw - 48px); max-width: 1400px; max-height: calc(100vh - 48px); padding: 30px; overflow: auto; border: 0; background: #fff; }
+dialog::backdrop { background: #171d15e8; }
+dialog img { width: auto; max-width: 100%; margin: 0 auto; }
+.close-lightbox { position: sticky; top: 0; z-index: 1; display: block; margin: -16px -16px 4px auto; padding: 5px 10px; border: 0; background: #fff; color: #323c2a; font-size: 28px; line-height: 1; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .hero--cover .hero-frame { min-height: 640px; }
+  .hero--cover.is-split .hero-media { right: 0; }
+  .hero--cover.is-split .hero-media::after { display: none; }
+  .hero--cover .hero-media video { object-position: var(--hero-pos-mobile, var(--hero-pos, 50% 50%)); }
+  .hero--cover .hero-frame::after { background: linear-gradient(180deg, rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.05) 24%, rgba(0, 0, 0, 0.45) 48%, rgba(0, 0, 0, 0.9) 74%, rgba(0, 0, 0, 0.96)); }
+  .hero--cover .hero-heading, .hero--cover.is-split .hero-heading { top: auto; right: 32px; bottom: 150px; left: 32px; width: auto; max-width: 640px; }
+  .hero-explore { bottom: 92px; left: 32px; transform: none; }
+  .hero-nav { padding: 20px 32px; }
+  .hero--cover .hero-foot { right: 32px; left: 32px; }
+  .trio { grid-template-columns: 1fr; }
+  .table-pair { grid-template-columns: minmax(0, 470px); gap: 28px; }
+  .heatmap { justify-self: center; }
+}
+@media (max-width: 800px) {
+  .desktop-break { display: none; }
+  .authors { font-size: 14px; }
+  .affiliations { font-size: 12px; }
+  .section-nav { justify-content: flex-start; gap: 22px; }
+  .section { padding: 62px 24px; }
+  .statement { padding: 62px 24px 52px; }
+  .statement .lead { font-size: 20px; }
+  .stat b { font-size: 26px; }
+  .footer { flex-wrap: wrap; }
+  .footer p { order: 3; width: 100%; text-align: center; }
+}
+@media (max-width: 650px) {
+  .hero--cover .hero-heading, .hero--cover.is-split .hero-heading { right: 24px; left: 24px; }
+  .title-main { font-size: clamp(36px, 10vw, 52px); }
+  .title-detail { margin-top: 14px; font-size: 17px; }
+  .hero-explore { left: 24px; font-size: 12px; }
+  .hero--cover .hero-foot { right: 24px; bottom: 20px; left: 24px; font-size: 11px; }
+  .hero-nav { padding: 16px 24px; font-size: 12px; }
+  .hero--stage { padding: 72px 16px 0; }
+  .hero-meta { padding: 28px 20px 32px; }
+  .actions { gap: 8px; }
+  .button { gap: 12px; padding: 8px 13px; font-size: 12px; }
+  .pair { grid-template-columns: 1fr; }
+  .pair.match { flex-direction: column; }
+  .pair.match > * { flex: none; width: 100%; }
+  .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .strip--scroll { grid-template-columns: none; grid-auto-columns: 150px; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 16px; }
+  .stat + .stat { border-left: 0; }
+  .stat:nth-child(even) { border-left: 1px solid var(--line); }
+  .steps { grid-template-columns: 1fr; gap: 18px; }
+  .steps > .arrow { display: none; }
+  .figure-foot { flex-wrap: wrap; gap: 10px; }
+  .figure-foot > span { flex-basis: 100%; }
+  .figure-foot .motion { margin-left: auto; }
+}
+@media (max-width: 480px) {
+  body { font-size: 16px; }
+  h2 { font-size: 29px; }
+  .question { font-size: 20px; }
+  .section { padding: 50px 20px; }
+  .tabs { gap: 20px; }
+  .tabs button { font-size: 13px; }
+  .chapters { justify-content: flex-start; gap: 10px 18px; }
+  .data-table { font-size: 13px; }
+  .heatmap td { width: 50px; font-size: 12px; }
+  dialog { width: calc(100vw - 22px); padding: 28px 10px 10px; }
+  .citation pre { padding: 14px 12px; font-size: 11px; }
+}
+@media (max-height: 600px) and (min-width: 901px) {
+  .hero--cover .hero-frame { min-height: 540px; }
+  .hero--cover .hero-heading { top: 76px; }
+  .title-main { font-size: 44px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+  </style>
+</head>
+<body style="--accent:#1e6a70; --accent-hero:#84d6d8">
+  <a class="skip" href="#overview">Skip to content</a>
+
+  <header class="hero hero--stage" style="--media-w:1040px">
+    <nav class="hero-nav" aria-label="Site">
+      <a href="https://doi.org/10.1109/ReMAR61031.2024.10617685">Paper ↗</a>
+    </nav>
+    <div class="hero-heading">
+      <p class="eyebrow">Mechanism analysis</p>
+      <h1><span class="title-main">Bricard Bifurcations</span><span class="title-detail">A Geometric Approach for the Bifurcation Modeling and Analysis of Plane-Symmetric Bricard Mechanisms</span></h1>
+    </div>
+    <div class="hero-stage-media is-light">
+      <a class="zoom" href="fig-4-myard.webp"><img src="fig-4-myard.webp" width="2000" height="858" fetchpriority="high" alt="Figure 4: left, a rendering of the half Bricard linkage with joint axes ξ0 to ξ3, a small view of its two surfaces and a table of its DH parameters; middle, a close view of the blue constraint surface and the pink motion surface, with an orange ellipse on one layer and the points A1 to A4 on it; right, four views of the whole mechanism, A1 to A4, around a circular arrow." aria-describedby="hero-caption"></a>
+    </div>
+    <div class="hero-foot">
+      <p id="hero-caption">Fig. 4: a plane-symmetric Bricard mechanism that bifurcates into a Myard 5R linkage. Left, the half Bricard linkage and its DH parameters; middle, the constraint surface (blue) and the motion surface (pink), whose ellipses coincide on one layer (orange); right, the whole mechanism in four configurations on that layer, A1 to A4.</p>
+    </div>
+    <div class="hero-meta">
+      <p class="authors">Yuliang&nbsp;Lu<sup>1</sup>, Siyue&nbsp;Yao<sup>1</sup>, Yanjun&nbsp;Wang<sup>2</sup>, Hao&nbsp;Wang<sup>2</sup>, Genliang&nbsp;Chen<sup>3,*</sup></p>
+      <p class="affiliations"><sup>1–3</sup>&nbsp;Shanghai Jiao Tong University &nbsp;·&nbsp; <sup>*</sup>&nbsp;Corresponding&nbsp;author</p>
+      <p class="venue">2024 6th International Conference on Reconfigurable Mechanisms and Robots (ReMAR), pp. 180–185, 2024</p>
+      <div class="actions">
+        <a class="button" href="https://doi.org/10.1109/ReMAR61031.2024.10617685">Paper <span aria-hidden="true">↗</span></a>
+        <a class="button" href="#cases">Six bifurcations <span aria-hidden="true">↓</span></a>
+        <a class="button" href="#citation">BibTeX</a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="section-nav" aria-label="On this page">
+    <a href="#overview">Overview</a><a href="#why">Why</a><a href="#ellipses">Ellipses</a><a href="#degeneration">Degeneration</a><a href="#cases">Six bifurcations</a><a href="#summary">Classification</a><a href="#paper">Paper</a>
+  </nav>
+
+  <main>
+    <section class="section statement" id="overview">
+      <div class="reading">
+        <p class="eyebrow">The idea</p>
+        <h2>Where two ellipses overlap,<br><em>the mechanism bifurcates.</em></h2>
+        <p class="lead">A plane-symmetric Bricard mechanism has a bifurcation where it can still move while its input joint is held fixed. Split about its symmetry plane, the mechanism's configurations for one input are the intersection points of two coplanar ellipses, so a bifurcation is where the two ellipses meet in infinitely many points.</p>
+        <p>The ellipses can coincide; flattened into segments, they can overlap; or one can shrink to a point that lies on the other. Going through every such case, the paper gives the conditions on the mechanism's geometric parameters for each, sorts the bifurcations into six cases, and shows an example of each, in which the mechanism bifurcates into a Myard 5R linkage, a Bennett 4R linkage, a spherical or a planar 5R linkage, or a single revolute joint.</p>
+      </div>
+    </section>
+
+    <section class="section soft" id="why">
+      <div class="reading">
+        <p class="eyebrow">01 / Why bifurcations</p>
+        <h2>Why bifurcations<br><em>matter.</em></h2>
+        <p class="question">Why find where a Bricard mechanism bifurcates?</p>
+        <p>Bricard mechanisms, first described and classified by Bricard in the 1890s, are single loops of six revolute joints. By the Grübler–Kutzbach formula such a loop should not move, yet thanks to their symmetry these overconstrained 6R mechanisms do. Plane-symmetric ones are studied for deployable structures, underwater graspers and compliant mechanisms, and many have been designed with special properties, for example deploying from a compact bundle to a planar configuration.</p>
+        <p>Their symmetry also makes complicated bifurcations possible. Where the mechanism is used with one degree of freedom, as in a deployable structure, a bifurcation is to be avoided; in a reconfigurable mechanism it may be valuable.</p>
+        <p>Existing studies analysed particular mechanisms one at a time. Others explained reconfiguration in general: by intersecting toroids that represent the motion of adjacent joints, or, for the general plane-symmetric Bricard mechanism, by solving Denavit–Hartenberg (DH) matrix equations. Both need rather complicated calculation, and some of the conditions on the parameters stay unclear. This paper sets out to find plane-symmetric Bricard mechanisms with bifurcations, to explain each bifurcation visually, and to give the conditions on the geometric parameters in detail.</p>
+      </div>
+    </section>
+
+    <section class="section" id="ellipses">
+      <div class="reading">
+        <p class="eyebrow">02 / Geometric approach</p>
+        <h2>Two ellipses<br><em>for each input angle.</em></h2>
+        <p class="question">How do two ellipses give the mechanism's configurations?</p>
+        <p>Split about its symmetry plane, the plane-symmetric Bricard mechanism gives the half Bricard linkage: a spatial RRRRE linkage with four revolute joints, ξ<sub>0</sub> to ξ<sub>3</sub>, and a planar joint, and with one degree of freedom. Its geometry is given by DH parameters: link lengths a, offsets d, twists α and joint angles θ.</p>
+      </div>
+      <figure class="reading paper-fig"><a class="zoom" href="fig-1-half-linkage.webp"><img src="fig-1-half-linkage.webp" width="1808" height="1129" loading="lazy" alt="Figure 1: left, a closed loop of orange, blue, green and cyan links with joint axes ξ0 to ξ5 and a grey symmetry plane, its upper part framed and labelled Original; right, that part enlarged and labelled Half: the half Bricard linkage on a pink plane, with link lengths a01, a12 and a23, offsets d01 and d12, axes ξ0 to ξ3 and x, y and z axes at O."></a><figcaption>Fig. 1: the plane-symmetric Bricard mechanism (left) and the half Bricard linkage with its DH parameters (right).</figcaption></figure>
+      <div class="reading">
+        <p>For a given angle θ<sub>0</sub> of the input joint ξ<sub>0</sub>, two coplanar ellipses, built from the poses of the intermediate joint axes, represent the rotations of the joints: the constraint ellipse, set by the length a<sub>23</sub> and the twist α<sub>23</sub> of the last link, and the motion ellipse, set by the other links and by θ<sub>0</sub>. Each point where they intersect is one set of joint angles, and so one configuration of the half Bricard linkage; mirroring it gives the configuration of the whole mechanism. Finding the configurations comes down to intersecting two ellipses, a problem with a complete solution.</p>
+        <p>As θ<sub>0</sub> changes, the motion ellipse changes with it, while the constraint ellipse stays the same. Stacked along θ<sub>0</sub>, the ellipses form two surfaces, the constraint surface and the motion surface, and each layer holds the two ellipses for one input. The curves where the surfaces intersect show how the mechanism moves: its continuous branches of motion and its dead-center configurations.</p>
+      </div>
+      <div class="wide pair match">
+        <figure class="paper-fig" style="--ar:1.4615"><a class="zoom" href="fig-2-configurations.webp"><img src="fig-2-configurations.webp" width="1384" height="947" loading="lazy" alt="Figure 2: a blue constraint ellipse and a red motion ellipse crossing at two points, cyan and yellow, in the x-y plane; dash-dot arrows lead from each point to renderings of the half Bricard linkage and of the whole mechanism in the matching configuration."></a><figcaption>Fig. 2: each intersection point of the two ellipses is one configuration of the half Bricard linkage and, mirrored, of the whole mechanism.</figcaption></figure>
+        <figure class="paper-fig" style="--ar:1.6266"><a class="zoom" href="fig-3-surfaces.webp"><img src="fig-3-surfaces.webp" width="1568" height="964" loading="lazy" alt="Figure 3: a blue mesh cylinder, the constraint surface, and a pink bulb-shaped motion surface along the θ0 axis, with their intersection curves in yellow; a grey layer through them gives the two ellipses drawn on the right."></a><figcaption>Fig. 3: stacked along θ<sub>0</sub>, the ellipses form the constraint surface and the motion surface; each layer holds the two ellipses for one input.</figcaption></figure>
+      </div>
+      <details class="evidence reading"><summary>The two ellipses' equations</summary>
+        <p>Constraint ellipse, Eq. (1):</p>
+        <p style="text-align:center">x<sup>2</sup>&nbsp;/&nbsp;a<sub>23</sub><sup>2</sup> + y<sup>2</sup>&nbsp;/&nbsp;sin<sup>2</sup>&nbsp;α<sub>23</sub>&nbsp;=&nbsp;1</p>
+        <p>Motion ellipse, Eq. (2):</p>
+        <p style="text-align:center">(x&nbsp;−&nbsp;d<sub>12</sub>y&nbsp;−&nbsp;h<sub>1</sub>)<sup>2</sup>&nbsp;/&nbsp;(a<sub>12</sub>&nbsp;cos&nbsp;δ)<sup>2</sup> + (y&nbsp;−&nbsp;cos&nbsp;α<sub>12</sub>&nbsp;sin&nbsp;δ)<sup>2</sup>&nbsp;/&nbsp;(sin&nbsp;α<sub>12</sub>&nbsp;cos&nbsp;δ)<sup>2</sup>&nbsp;=&nbsp;1</p>
+        <p>where h<sub>1</sub>&nbsp;=&nbsp;−sin&nbsp;θ<sub>0</sub>&nbsp;a<sub>01</sub> + cos&nbsp;θ<sub>0</sub>&nbsp;d<sub>01</sub>&nbsp;sin&nbsp;α<sub>01</sub> and sin&nbsp;δ&nbsp;=&nbsp;cos&nbsp;θ<sub>0</sub>&nbsp;sin&nbsp;α<sub>01</sub> are known for a given input.</p>
+      </details>
+    </section>
+
+    <section class="section soft" id="degeneration">
+      <div class="reading">
+        <p class="eyebrow">03 / Degeneration</p>
+        <h2>When the ellipses<br><em>degenerate.</em></h2>
+        <p class="question">What happens when adjacent joint axes intersect or are parallel?</p>
+        <p>Every intersection point is a configuration for the given input. So if a plane-symmetric Bricard mechanism can still move with its input fixed, which means it has a bifurcation, its two ellipses for that input must share a continuous set of points.</p>
+        <p>In special geometries the ellipses degenerate. When two adjacent joint axes of the half Bricard linkage intersect or are parallel, a denominator in an ellipse's equation becomes zero and that ellipse flattens into a segment; when both of its denominators do, it shrinks to a point. Continuous intersections of these shapes count too.</p>
+      </div>
+      <figure class="wide table-fig">
+        <div class="table-wrap" tabindex="0" role="region" aria-labelledby="table-1-caption">
+          <table class="data-table grouped fit">
+            <thead>
+              <tr><th scope="col">Shape</th><th scope="col">Parameter</th><th scope="col" style="text-align:left">Joint axes</th><th scope="col" style="text-align:center">Constraint ellipse</th><th scope="col" style="text-align:center">Motion ellipse</th></tr>
+            </thead>
+            <tbody>
+              <tr><th rowspan="4" scope="rowgroup">Segment</th><td>a<sub>23</sub> = 0</td><td style="text-align:left">ξ<sub>2</sub>, ξ<sub>3</sub> intersect</td><td style="text-align:center">x = 0</td><td style="text-align:center">—</td></tr>
+              <tr><td>sin α<sub>23</sub> = 0</td><td style="text-align:left">ξ<sub>2</sub>, ξ<sub>3</sub> parallel</td><td style="text-align:center">y = 0</td><td style="text-align:center">—</td></tr>
+              <tr><td>a<sub>12</sub> = 0</td><td style="text-align:left">ξ<sub>1</sub>, ξ<sub>2</sub> intersect</td><td style="text-align:center">—</td><td style="text-align:center">x − d<sub>12</sub>y − h<sub>1</sub> = 0</td></tr>
+              <tr><td>sin α<sub>12</sub> = 0</td><td style="text-align:left">ξ<sub>1</sub>, ξ<sub>2</sub> parallel</td><td style="text-align:center">—</td><td style="text-align:center">y = cos α<sub>12</sub> sin δ</td></tr>
+            </tbody>
+            <tbody>
+              <tr><th rowspan="3" scope="rowgroup">Point</th><td>a<sub>23</sub> = sin α<sub>23</sub> = 0</td><td style="text-align:left">ξ<sub>2</sub>, ξ<sub>3</sub> collinear</td><td style="text-align:center">(0, 0)</td><td style="text-align:center">—</td></tr>
+              <tr><td>a<sub>12</sub> = sin α<sub>12</sub> = 0</td><td style="text-align:left">ξ<sub>1</sub>, ξ<sub>2</sub> collinear</td><td rowspan="2" style="text-align:center">—</td><td rowspan="2" style="text-align:center">(d<sub>12</sub> cos α<sub>12</sub> sin δ + h<sub>1</sub>, cos α<sub>12</sub> sin δ)</td></tr>
+              <tr><td>cos δ = 0</td><td style="text-align:left">ξ<sub>1</sub> ⊥ symmetry plane</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <figcaption id="table-1-caption">Table I: the conditions under which the constraint and motion ellipses degenerate into segments or points, and the shapes they become; — : that ellipse stays an ellipse.</figcaption>
+      </figure>
+      <div class="reading">
+        <p>Two of the point cases, with ξ<sub>2</sub> and ξ<sub>3</sub> or ξ<sub>1</sub> and ξ<sub>2</sub> collinear, make one of the two axes redundant: the whole mechanism is then no longer a 6R mechanism, so they are left out. The third, cos&nbsp;δ&nbsp;=&nbsp;0, means that ξ<sub>1</sub> is perpendicular to the symmetry plane, which happens only at one particular input during the motion.</p>
+        <p>Table II lists the shapes that can intersect continuously. Two ellipses can share infinitely many points only by coinciding, and an ellipse and a segment never can. Two segments can when they are collinear and overlap, which is a partial rotation of ξ<sub>1</sub>. A point on an ellipse or on a segment also counts: a point is an ellipse with both axes zero, and it contains a full turn of ξ<sub>1</sub>.</p>
+      </div>
+      <figure class="reading table-fig">
+        <div class="table-wrap" tabindex="0" role="region" aria-labelledby="table-2-caption">
+          <table class="data-table fit">
+            <thead>
+              <tr><th></th><th class="axis" colspan="3" scope="colgroup">Motion ellipse</th></tr>
+              <tr><th scope="col">Constraint ellipse</th><th scope="col" style="text-align:center">Ellipse</th><th scope="col" style="text-align:center">Segment</th><th scope="col" style="text-align:center">Point</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Ellipse</th><td style="text-align:center">Coincide</td><td style="text-align:center">—</td><td style="text-align:center">On</td></tr>
+              <tr><th scope="row">Segment</th><td style="text-align:center">—</td><td style="text-align:center">Collinear</td><td style="text-align:center">On</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <figcaption id="table-2-caption">Table II: how the constraint ellipse (rows) and the motion ellipse (columns), or the shapes they degenerate into, can intersect continuously; — : never.</figcaption>
+      </figure>
+    </section>
+
+    <section class="section" id="cases">
+      <div class="reading">
+        <p class="eyebrow">04 / Case studies</p>
+        <h2>Six bifurcations,<br><em>one example each.</em></h2>
+        <p class="question">What does each kind of continuous intersection turn the mechanism into?</p>
+        <p>For each kind of continuous intersection, the paper derives the conditions on the DH parameters and builds an example mechanism that meets them. Each figure shows the example with its DH parameters, and its constraint surface (blue) and motion surface (pink) with the layer where the bifurcation happens.</p>
+      </div>
+      <div class="wide">
+        <div class="tabs" role="tablist" aria-label="Bifurcations">
+          <button id="tab-myard" role="tab" aria-selected="true" aria-controls="panel-myard">Myard 5R</button>
+          <button id="tab-bennett" role="tab" aria-selected="false" aria-controls="panel-bennett">Bennett 4R</button>
+          <button id="tab-revolute" role="tab" aria-selected="false" aria-controls="panel-revolute">Revolute joint (coincident)</button>
+          <button id="tab-spherical" role="tab" aria-selected="false" aria-controls="panel-spherical">Spherical 5R</button>
+          <button id="tab-planar" role="tab" aria-selected="false" aria-controls="panel-planar">Planar 5R</button>
+          <button id="tab-point" role="tab" aria-selected="false" aria-controls="panel-point">Revolute joint (point)</button>
+        </div>
+        <div class="tab-panel" id="panel-myard" role="tabpanel" aria-labelledby="tab-myard">
+          <figure class="paper-fig"><a class="zoom" href="fig-4-myard.webp"><img src="fig-4-myard.webp" width="2000" height="858" loading="lazy" alt="Figure 4: left, a rendering of the half Bricard linkage with joint axes ξ0 to ξ3, a small view of its two surfaces and a table of its DH parameters; middle, a close view of the blue and pink surfaces, with an orange ellipse on one layer and the points A1 to A4 on it; right, four views of the whole mechanism, A1 to A4, around a circular arrow."></a><figcaption>Fig. 4: bifurcation into a Myard 5R linkage: the half Bricard linkage and its DH parameters, the surfaces with configurations A1 to A4 on the layer where the ellipses coincide, and the whole mechanism in A1 to A4.</figcaption></figure>
+          <p>With ξ<sub>1</sub> perpendicular to ξ<sub>2</sub> (α<sub>12</sub>&nbsp;=&nbsp;π/2 or 3π/2), d<sub>12</sub>&nbsp;=&nbsp;0 and a<sub>12</sub>&nbsp;sin&nbsp;α<sub>23</sub>&nbsp;=&nbsp;±a<sub>23</sub>, the two ellipses can coincide. With the input joint ξ<sub>0</sub> held fixed, the rest of the mechanism then moves as a Myard 5R linkage, a symmetric single-loop 5R linkage; a further condition on the parameters makes sure the whole mechanism can be assembled. In the example, the ellipses meet in two points on most layers, two configurations for the same input, but at θ<sub>0</sub>&nbsp;=&nbsp;37.59° they coincide completely. On that layer the input joint ξ<sub>0</sub> can move only in configurations A1 and A3: the other points have no connected intersection points on the layers above or below.</p>
+        </div>
+        <div class="tab-panel" id="panel-bennett" role="tabpanel" aria-labelledby="tab-bennett">
+          <figure class="paper-fig" style="max-width:962px; margin:0 auto"><a class="zoom" href="fig-5-bennett.webp"><img src="fig-5-bennett.webp" width="2000" height="1040" loading="lazy" alt="Figure 5: left, a rendering of the half Bricard linkage with joint axes ξ0 to ξ3 and a table of its DH parameters; middle, the blue and pink surfaces twisting around each other, with an orange ellipse on one layer and the points B1 to B4 on it; right, the mechanism in B1 to B4, a closed loop in B1 and B3 and a straight line in B2 and B4, joined by curved arrows."></a><figcaption>Fig. 5: bifurcation into a Bennett 4R linkage: the half Bricard linkage and its DH parameters, the surfaces with configurations B1 to B4 on the layer where the ellipses coincide, and the mechanism in B1 to B4.</figcaption></figure>
+          <p>When the ellipses coincide with δ&nbsp;=&nbsp;0 or&nbsp;π, ξ<sub>1</sub> lies on the symmetry plane and coincides with its mirror image ξ<sub>5</sub>. Then a<sub>12</sub>&nbsp;=&nbsp;a<sub>23</sub> and α<sub>12</sub>&nbsp;=&nbsp;±α<sub>23</sub>&nbsp;+&nbsp;kπ, and either a<sub>01</sub>&nbsp;=&nbsp;0 or α<sub>01</sub>&nbsp;=&nbsp;0 or&nbsp;π allows ξ<sub>1</sub> to lie on the plane. With α<sub>12</sub>&nbsp;=&nbsp;−α<sub>23</sub>&nbsp;+&nbsp;kπ, as in the example, the last four links form a symmetric Bennett linkage. Going round the coinciding ellipses, it lies in a straight line at B2 and B4, and the input joint can move only at B1 and B3.</p>
+        </div>
+        <div class="tab-panel" id="panel-revolute" role="tabpanel" aria-labelledby="tab-revolute">
+          <figure class="paper-fig" style="max-width:877px; margin:0 auto"><a class="zoom" href="fig-6-revolute.webp"><img src="fig-6-revolute.webp" width="2000" height="1140" loading="lazy" alt="Figure 6: left, a rendering of the half Bricard linkage with joint axes ξ0 to ξ3 and a table of its DH parameters; middle, the blue and pink surfaces, with an orange ellipse on the lowest layer and the points C1 to C4 on it; right, the mechanism in C1 to C4, joined by triangular arrows."></a><figcaption>Fig. 6: bifurcation into a revolute joint with coinciding ellipses: the half Bricard linkage and its DH parameters, the surfaces with configurations C1 to C4 on the layer where the ellipses coincide, and the mechanism in C1 to C4.</figcaption></figure>
+          <p>With α<sub>12</sub>&nbsp;=&nbsp;α<sub>23</sub>&nbsp;+&nbsp;kπ instead, the last two links of the half Bricard linkage overlap. When the two ellipses coincide, ξ<sub>1</sub> and ξ<sub>3</sub> are collinear, and the mechanism reduces to a single revolute joint.</p>
+        </div>
+        <div class="tab-panel" id="panel-spherical" role="tabpanel" aria-labelledby="tab-spherical">
+          <figure class="paper-fig" style="max-width:814px; margin:0 auto"><a class="zoom" href="fig-7-spherical.webp"><img src="fig-7-spherical.webp" width="2000" height="1229" loading="lazy" alt="Figure 7: left, a rendering of the half Bricard linkage whose joint axes ξ1, ξ2 and ξ3 meet at one joint, and a table of its DH parameters; right, a pink motion surface curving around a flat blue constraint surface, with a short yellow segment where they overlap, and a framed side view in which a red curve crosses a blue line at a yellow point."></a><figcaption>Fig. 7: degeneration into a spherical 5R linkage: the half Bricard linkage and its DH parameters, and the surfaces, which overlap along a segment on one layer (yellow), with a side view.</figcaption></figure>
+          <p>Both ellipses can flatten into segments on x&nbsp;=&nbsp;0 (d<sub>12</sub>&nbsp;=&nbsp;a<sub>12</sub>&nbsp;=&nbsp;a<sub>23</sub>&nbsp;=&nbsp;0 and h<sub>1</sub>&nbsp;=&nbsp;0); a further inequality makes the segments overlap, so that the mechanism can be assembled. ξ<sub>1</sub>, ξ<sub>2</sub> and ξ<sub>3</sub> then meet in one point and, with the revolute axis of the planar joint, form a spherical 4R linkage; mirrored, the whole mechanism is a spherical 5R linkage of ξ<sub>1</sub> to ξ<sub>5</sub>. In most cases this happens on one layer only, and the mechanism can be assembled only at that fixed input, so its mobility can hardly be called a bifurcation. The input joint can move only if ξ<sub>0</sub> also passes through the common point: the half Bricard linkage is then a spherical 5R linkage, and the whole a spherical 6R linkage.</p>
+        </div>
+        <div class="tab-panel" id="panel-planar" role="tabpanel" aria-labelledby="tab-planar">
+          <figure class="paper-fig" style="max-width:888px; margin:0 auto"><a class="zoom" href="fig-8-planar.webp"><img src="fig-8-planar.webp" width="2000" height="1126" loading="lazy" alt="Figure 8: left, a rendering of the half Bricard linkage whose joint axes ξ1, ξ2 and ξ3 are parallel, and a table of its DH parameters; right, a pink motion surface crossing a flat blue constraint surface, with a short yellow segment where they overlap, and a framed side view in which a red curve crosses a blue line at a yellow point."></a><figcaption>Fig. 8: degeneration into a planar 5R linkage: the half Bricard linkage and its DH parameters, and the surfaces, which overlap along a segment on one layer (yellow), with a side view.</figcaption></figure>
+          <p>When both ellipses flatten into segments on y&nbsp;=&nbsp;0 (α<sub>12</sub> and α<sub>23</sub> equal to 0 or&nbsp;π, and sin&nbsp;δ&nbsp;=&nbsp;0, in most cases only at θ<sub>0</sub>&nbsp;=&nbsp;π/2), the segments overlap if a<sub>01</sub>&nbsp;&lt;&nbsp;a<sub>12</sub>&nbsp;+&nbsp;a<sub>23</sub>. ξ<sub>1</sub>, ξ<sub>2</sub> and ξ<sub>3</sub> are then parallel and, with the planar joint, form a planar RRRP linkage with one degree of freedom; the whole mechanism becomes a planar 5R linkage, ξ<sub>1</sub> to ξ<sub>5</sub> all parallel. Again, ξ<sub>0</sub> cannot move in most cases. It can move only if it is parallel to the other axes too, which makes the half Bricard linkage a planar RRRRP linkage and the whole a planar 6R linkage.</p>
+        </div>
+        <div class="tab-panel" id="panel-point" role="tabpanel" aria-labelledby="tab-point">
+          <figure class="paper-fig" style="max-width:958px; margin:0 auto"><a class="zoom" href="fig-9-point.webp"><img src="fig-9-point.webp" width="2000" height="1044" loading="lazy" alt="Figure 9: left, a blue constraint ellipse with a red point on it labelled motion ellipse, and a table of DH parameters; middle, the blue cylinder and the pink motion surface, which narrows to a point at its top and bottom; right, two renderings of the half Bricard linkage with a red arrow turning about ξ1."></a><figcaption>Fig. 9: bifurcation into a revolute joint by point degeneration: the motion ellipse as a point on the constraint ellipse, the DH parameters, the surfaces, and the two configurations from which the mechanism can move on.</figcaption></figure>
+          <p>With α<sub>01</sub>&nbsp;=&nbsp;π/2 or 3π/2, the motion ellipse shrinks to a point at the input where ξ<sub>1</sub> is perpendicular to the symmetry plane. If that point lies on the constraint ellipse, ξ<sub>1</sub> can make a full turn while ξ<sub>2</sub> and ξ<sub>3</sub> keep their relative pose. ξ<sub>1</sub> and its mirror image ξ<sub>5</sub> are collinear, so the distal part of the mechanism rotates about them as about a revolute joint. As with coinciding ellipses, the mechanism can move on along the two intersection curves of the surfaces only from the two configurations shown. A point on a segment behaves almost the same, except that more than two configurations may let the input joint move.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft" id="summary">
+      <div class="reading">
+        <p class="eyebrow">05 / Classification</p>
+        <h2>Classification<br><em>of the bifurcations.</em></h2>
+        <p class="question">Which axis features lead to which mechanism type, and what about asymmetric motion?</p>
+        <p>Table III gathers the six cases: the kind of continuous intersection, the feature of the joint axes it requires, and what the plane-symmetric Bricard mechanism bifurcates into.</p>
+      </div>
+      <figure class="wide table-fig">
+        <div class="table-wrap" tabindex="0" role="region" aria-labelledby="table-3-caption">
+          <table class="data-table grouped fit">
+            <thead>
+              <tr><th scope="col">Continuous intersection</th><th scope="col">Axis feature</th><th scope="col" style="text-align:left">Mechanism type</th></tr>
+            </thead>
+            <tbody>
+              <tr><th rowspan="3" scope="rowgroup">Ellipses coincide</th><td>ξ<sub>1</sub> ⊥ ξ<sub>2</sub></td><td style="text-align:left">Myard 5R</td></tr>
+              <tr><td>ξ<sub>1</sub> in the symmetry plane</td><td style="text-align:left">Bennett 4R</td></tr>
+              <tr><td>ξ<sub>1</sub> in the symmetry plane</td><td style="text-align:left">Revolute joint</td></tr>
+            </tbody>
+            <tbody>
+              <tr><th rowspan="2" scope="rowgroup">Segments collinear</th><td>ξ<sub>1</sub> to ξ<sub>5</sub> through one point</td><td style="text-align:left">Spherical 5R</td></tr>
+              <tr><td>ξ<sub>1</sub> to ξ<sub>5</sub> parallel</td><td style="text-align:left">Planar 5R</td></tr>
+            </tbody>
+            <tbody>
+              <tr><th rowspan="1" scope="rowgroup">Point on an ellipse or a segment</th><td>ξ<sub>1</sub> ⊥ symmetry plane</td><td style="text-align:left">Revolute joint</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <figcaption id="table-3-caption">Table III: each kind of continuous intersection, the feature of the joint axes, and what the plane-symmetric Bricard mechanism bifurcates into.</figcaption>
+      </figure>
+      <div class="reading">
+        <p>These conditions come from the half Bricard linkage, so they describe bifurcations in which the mirrored whole mechanism moves symmetrically. The whole mechanism may also be able to move asymmetrically, so the conditions suit a plane-symmetric bifurcation but are stricter than a general bifurcation needs. When the ellipses coincide with ξ<sub>1</sub> on the symmetry plane, for example, the distal part of the mechanism can rotate about the coincident ξ<sub>1</sub> and ξ<sub>5</sub>, an asymmetric configuration in which ξ<sub>2</sub> and ξ<sub>3</sub> keep their relative pose; and spherical and planar 5R linkages have two degrees of freedom, so their configurations need not be symmetric.</p>
+        <p>Table IV gives simpler conditions under which the mechanism bifurcates from symmetric configurations into asymmetric ones. Each is part of one of the cases above, and so is its axis feature. At such a configuration the mechanism can move with its input fixed, but asymmetrically.</p>
+      </div>
+      <figure class="wide table-fig">
+        <div class="table-wrap" tabindex="0" role="region" aria-labelledby="table-4-caption">
+          <table class="data-table fit">
+            <thead>
+              <tr><th scope="col">Parameter conditions</th><th scope="col" style="text-align:left">Axis feature</th><th scope="col" style="text-align:left">Mechanism type</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">a<sub>01</sub>&nbsp;=&nbsp;0 or α<sub>01</sub>&nbsp;=&nbsp;0,&nbsp;π</th><td style="text-align:left">ξ<sub>1</sub>, ξ<sub>5</sub> in the symmetry plane</td><td style="text-align:left">Revolute joint</td></tr>
+              <tr><th scope="row">a<sub>12</sub>&nbsp;=&nbsp;0</th><td style="text-align:left">ξ<sub>1</sub>, ξ<sub>2</sub>, ξ<sub>4</sub>, ξ<sub>5</sub> through one point</td><td style="text-align:left">Spherical 4R</td></tr>
+              <tr><th scope="row">α<sub>12</sub>&nbsp;=&nbsp;0,&nbsp;π</th><td style="text-align:left">ξ<sub>1</sub>, ξ<sub>2</sub>, ξ<sub>4</sub>, ξ<sub>5</sub> parallel</td><td style="text-align:left">Planar 4R</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <figcaption id="table-4-caption">Table IV: bifurcations from symmetric into asymmetric motion: the conditions on the parameters, the feature of the joint axes, and the mechanism type.</figcaption>
+      </figure>
+    </section>
+
+    <section class="section" id="qa">
+      <div class="reading">
+        <p class="eyebrow">Questions &amp; answers</p>
+        <h2>Common questions.</h2>
+        <div class="qa">
+          <details><summary>What is a bifurcation here?</summary><p>A configuration where the plane-symmetric Bricard mechanism can still move while its input joint is held fixed. A mechanism that should move with one degree of freedom, like a deployable structure, has to avoid it; for a reconfigurable mechanism it may be valuable.</p></details>
+          <details><summary>Why look for continuous intersections?</summary><p>Each intersection point of the two ellipses is one configuration for the given input. If the mechanism can move with its input fixed, it passes through infinitely many configurations on that one layer, so the two shapes must share infinitely many points: they coincide, they overlap as segments, or one is a point on the other.</p></details>
+          <details><summary>Why do segments and points count?</summary><p>When adjacent joint axes intersect or are parallel, an ellipse flattens into a segment, and when ξ<sub>1</sub> is perpendicular to the symmetry plane the motion ellipse shrinks to a point. Two segments can overlap partly, a partial rotation of ξ<sub>1</sub>; a point is an ellipse with both axes zero and contains a full turn of ξ<sub>1</sub>.</p></details>
+          <details><summary>Are the spherical and planar cases true bifurcations?</summary><p>In most cases the segments overlap on one layer only, and the mechanism can be assembled only at that fixed input, so its mobility can hardly be called a bifurcation. The input joint can move only if ξ<sub>0</sub> also passes through the common point of the other axes, or is parallel to them, which makes the whole mechanism a spherical or a planar 6R linkage.</p></details>
+          <details><summary>What do the asymmetric cases add?</summary><p>The analysis uses the half Bricard linkage, so it finds bifurcations into symmetric motion, and its conditions are stricter than a general bifurcation needs. Table IV adds simpler conditions under which the mechanism, at the bifurcation, moves with its input fixed but asymmetrically: as a revolute joint, a spherical 4R linkage or a planar 4R linkage.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft" id="paper">
+      <div class="reading">
+        <p class="eyebrow">Paper &amp; authors</p>
+        <h2>Bifurcations<br><em>from two ellipses.</em></h2>
+        <p class="paper-title">A Geometric Approach for the Bifurcation Modeling and Analysis of Plane-Symmetric Bricard Mechanisms</p>
+        <p>Yuliang Lu, Siyue Yao, Yanjun Wang, Hao Wang, and Genliang Chen.</p>
+        <p class="venue">2024 6th International Conference on Reconfigurable Mechanisms and Robots (ReMAR), pp. 180–185, 2024.</p>
+        <div class="paper-links"><a class="text-link" href="https://doi.org/10.1109/ReMAR61031.2024.10617685">Read the paper at doi.org/10.1109/ReMAR61031.2024.10617685 ↗</a></div>
+        <details class="evidence citation" id="citation">
+          <summary>Citation / BibTeX</summary>
+          <div class="citation-actions"><button class="citation-copy" id="copy-bibtex" type="button" aria-describedby="citation-status" hidden>Copy BibTeX</button><a href="citation.bib" download>Download .bib ↓</a></div>
+          <p class="citation-status" id="citation-status" role="status" aria-live="polite"></p>
+          <pre tabindex="0" aria-label="BibTeX citation"><code id="bibtex">@inproceedings{lu2024bifurcation,
+  title     = {A Geometric Approach for the Bifurcation Modeling and Analysis of Plane-Symmetric Bricard Mechanisms},
+  author    = {Lu, Yuliang and Yao, Siyue and Wang, Yanjun and Wang, Hao and Chen, Genliang},
+  booktitle = {2024 6th International Conference on Reconfigurable Mechanisms and Robots (ReMAR)},
+  pages     = {180--185},
+  year      = {2024},
+  publisher = {IEEE},
+  doi       = {10.1109/ReMAR61031.2024.10617685}
+}</code></pre>
+        </details>
+        <details class="evidence"><summary>Full affiliations</summary><ol class="affiliation-list"><li>Shanghai Key Laboratory of Digital Manufacturing for Thin-Walled Structures, and the Meta Robotics Institute, Shanghai Jiao Tong University (SJTU), Shanghai, 200240, P.R. China</li><li>Institute of Marine Equipment, SJTU, Shanghai, 200240, P.R. China</li><li>State Key Laboratory of Mechanical Systems and Vibration, and the Meta Robotics Institute, SJTU, Shanghai, 200240, P.R. China</li></ol><p class="small">* Corresponding author: Genliang Chen</p></details>
+      </div>
+    </section>
+
+    <section class="section related" id="related">
+      <div class="wide">
+        <p class="eyebrow">Related projects</p>
+        <ul class="related-list">
+          <li><a href="https://bricard-kinematics.github.io/"><b>Plane-symmetric Bricard kinematics</b><span>Every configuration of a general plane-symmetric Bricard mechanism from two coplanar ellipses · MMT 2023</span></a></li>
+          <li><a href="https://doi.org/10.1115/1.4052339"><b>Planar 2R1T RCM mechanism</b><span>A remote center-of-motion mechanism of dual-triangular and straight-line linkages for minimally invasive surgery · JMR 2021</span></a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a href="#paper">Paper &amp; authors ↑</a>
+  </footer>
+  <dialog id="lightbox" aria-label="Enlarged figure"><button class="close-lightbox" type="button" aria-label="Close enlarged figure">×</button><img alt=""></dialog>
+<script>
+// Shared behavior for Siyue Yao's project pages: looping clips that play only while on screen, tabs,
+// chapter buttons, links that open <details>, BibTeX copy, the figure lightbox and section highlighting.
+// No dependencies. Without JavaScript every tab panel stays visible and clips keep native controls.
+(() => {
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  /* Looping clips */
+  const loops = [...document.querySelectorAll("video.loop")];
+  const manualPause = new WeakSet();
+  const inView = new WeakSet();
+  const buttonFor = (video) => document.querySelector(`[data-video="${video.id}"]`);
+  function update(video) {
+    const button = buttonFor(video);
+    if (!button) return;
+    button.textContent = video.paused ? "Play clip" : "Pause clip";
+    button.setAttribute("aria-pressed", String(!video.paused));
+  }
+  function play(video) {
+    const promise = video.play();
+    if (promise) promise.catch(() => update(video));
+  }
+  const mayAutoplay = (video) => inView.has(video) && !manualPause.has(video) && !reduced.matches && !document.hidden;
+  loops.forEach((video) => {
+    video.muted = true;
+    video.removeAttribute("controls");
+    video.addEventListener("play", () => update(video));
+    video.addEventListener("pause", () => update(video));
+    update(video);
+    const button = buttonFor(video);
+    if (button) {
+      button.addEventListener("click", () => {
+        if (video.paused) { manualPause.delete(video); play(video); }
+        else { manualPause.add(video); video.pause(); }
+      });
+    }
+  });
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => entries.forEach(({ target, isIntersecting }) => {
+      if (isIntersecting) { inView.add(target); if (mayAutoplay(target)) play(target); }
+      else { inView.delete(target); target.pause(); }
+    }), { threshold: 0.3 });
+    loops.forEach((video) => observer.observe(video));
+  }
+  const resync = () => loops.forEach((video) => {
+    if (mayAutoplay(video)) play(video);
+    else if (document.hidden || reduced.matches) video.pause();
+  });
+  document.addEventListener("visibilitychange", resync);
+  reduced.addEventListener("change", resync);
+
+  /* Full videos: only one plays at a time */
+  const fullVideos = [...document.querySelectorAll("video:not(.loop)")];
+  fullVideos.forEach((video) => video.addEventListener("play", () => {
+    fullVideos.forEach((other) => { if (other !== video) other.pause(); });
+  }));
+
+  /* Tabs */
+  document.querySelectorAll('[role="tablist"]').forEach((list) => {
+    const tabs = [...list.querySelectorAll('[role="tab"]')];
+    if (!tabs.length) return;
+    const panelOf = (tab) => document.getElementById(tab.getAttribute("aria-controls"));
+    function select(selected, moveFocus = false) {
+      tabs.forEach((tab) => {
+        const active = tab === selected;
+        tab.setAttribute("aria-selected", String(active));
+        tab.tabIndex = active ? 0 : -1;
+        const panel = panelOf(tab);
+        if (!panel) return;
+        panel.hidden = !active;
+        if (!active) panel.querySelectorAll("video").forEach((video) => video.pause());
+      });
+      if (moveFocus) selected.focus();
+    }
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => select(tab));
+      tab.addEventListener("keydown", (event) => {
+        const target = { ArrowRight: (index + 1) % tabs.length, ArrowLeft: (index + tabs.length - 1) % tabs.length, Home: 0, End: tabs.length - 1 }[event.key];
+        if (target === undefined) return;
+        event.preventDefault();
+        select(tabs[target], true);
+      });
+    });
+    select(tabs.find((tab) => tab.getAttribute("aria-selected") === "true") || tabs[0]);
+  });
+
+  /* Chapter buttons: <button data-target="video-id" data-time="12.4"> */
+  document.querySelectorAll("button[data-time][data-target]").forEach((button) => button.addEventListener("click", () => {
+    const video = document.getElementById(button.dataset.target);
+    if (!video) return;
+    const seek = () => { video.currentTime = Number(button.dataset.time); play(video); };
+    if (video.readyState >= 1) seek();
+    else {
+      video.addEventListener("loadedmetadata", seek, { once: true });
+      video.preload = "metadata";
+      video.load();
+    }
+    video.scrollIntoView({ block: "center", behavior: reduced.matches ? "instant" : "smooth" });
+  }));
+
+  /* Links to a <details> open it (e.g. the BibTeX button) */
+  const openDetails = (hash) => {
+    if (!hash || hash.length < 2) return;
+    const target = document.getElementById(decodeURIComponent(hash.slice(1)));
+    if (target instanceof HTMLDetailsElement) target.open = true;
+  };
+  document.querySelectorAll('a[href^="#"]').forEach((link) => link.addEventListener("click", () => openDetails(link.hash)));
+  openDetails(window.location.hash);
+
+  /* BibTeX copy */
+  const copy = document.getElementById("copy-bibtex");
+  const bibtex = document.getElementById("bibtex");
+  const status = document.getElementById("citation-status");
+  if (copy && bibtex && status) {
+    copy.hidden = false;
+    copy.addEventListener("click", async () => {
+      status.textContent = "";
+      try {
+        if (!navigator.clipboard || !navigator.clipboard.writeText) throw new Error("Clipboard unavailable");
+        await navigator.clipboard.writeText(`${bibtex.textContent.trim()}\n`);
+        status.textContent = "BibTeX copied to clipboard.";
+      } catch {
+        status.textContent = "Could not copy automatically. Select the BibTeX below and copy it, or download the .bib file.";
+      }
+    });
+  }
+
+  /* Figure lightbox */
+  const lightbox = document.getElementById("lightbox");
+  if (lightbox && typeof lightbox.showModal === "function") {
+    const image = lightbox.querySelector("img");
+    document.querySelectorAll("a.zoom").forEach((link) => link.addEventListener("click", (event) => {
+      event.preventDefault();
+      image.src = link.href;
+      image.alt = link.querySelector("img")?.alt || "";
+      lightbox.showModal();
+      document.body.style.overflow = "hidden";
+    }));
+    lightbox.querySelector("button").addEventListener("click", () => lightbox.close());
+    lightbox.addEventListener("click", (event) => { if (event.target === lightbox) lightbox.close(); });
+    lightbox.addEventListener("close", () => { document.body.style.overflow = ""; });
+  }
+
+  /* Section nav highlight */
+  const navLinks = [...document.querySelectorAll(".section-nav a")];
+  if (navLinks.length && "IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      navLinks.forEach((link) => link.classList.toggle("active", link.hash === `#${entry.target.id}`));
+    }), { rootMargin: "-20% 0px -65% 0px" });
+    navLinks.forEach((link) => {
+      const section = document.getElementById(decodeURIComponent(link.hash.slice(1)));
+      if (section) observer.observe(section);
+    });
+  }
+})();
+</script>
+</body>
+</html>
